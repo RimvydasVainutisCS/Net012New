@@ -2,7 +2,7 @@
 
 namespace Net012New
 {
-    public class Matrix<T>
+    public abstract class Matrix<T>
     {
         public EventHandler<UniversalEventArgs> OnItemChange { get; set; }
         private int ColumnsNumber { get; }
@@ -13,7 +13,6 @@ namespace Net012New
         {
             ColumnsNumber = col;
             RowsNumber = row;
-
             data = new T[col * row];
         }
 
@@ -27,19 +26,24 @@ namespace Net012New
                 {
                     throw new ArgumentException("Your indexes i or j are out of Matrix bounds.");
                 }
-                else if (data[GetIndex(RowsNumber, ColumnsNumber)].Equals(value))
+                else if (i < 0 || j < 0)
+                {
+                    throw new Exception("Indexes can't be negative values!");
+                }
+                else if (data[(i * ColumnsNumber) + j].Equals(value))
                 {
                     Console.WriteLine("Not Generated");
                 }
-
-
                 else
                 {
                     data[(i * ColumnsNumber) + j] = value;
+                    OnItemChange?.Invoke(this, new UniversalEventArgs(i, j, value));
                 }
             }
         }
-        public int GetIndex(int i, int j) => (RowsNumber * i) + j;
+
+        // 3*1 + 1 = 5 
+        //public int GetIndex(int i, int j) => (RowsNumber * i) + j;
 
 
     }

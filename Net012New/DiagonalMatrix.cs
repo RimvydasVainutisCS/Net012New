@@ -6,19 +6,16 @@ namespace Net012New
     {
         readonly int _rank = 0;
 
+        public DiagonalMatrix(int rank) : base(rank)
+        {
+            data = new T[rank];
+        }
+
         public override T this[int i, int j]
         {
             get
             {
-                if (i > _rank)
-                {
-                    throw new Exception("Index i is out of Diagonal Matrix bounds!");
-                }
-                else if (j > _rank)
-                {
-                    throw new Exception("Index j is out of Diagonal Matrix bounds!");
-                }
-                else if (i < 0 || j < 0)
+                if (i < 0 || j < 0)
                 {
                     throw new Exception("Indexes can't be negative values!");
                 }
@@ -62,9 +59,6 @@ namespace Net012New
         //    DiagMatrixIndexChanged?.Invoke(this, e);
         //}
 
-        public DiagonalMatrix(int rank) : base(rank)
-        {
-            data = new T[rank];
-        }
+        
     }
 }
