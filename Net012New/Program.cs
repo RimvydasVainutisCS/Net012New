@@ -25,7 +25,7 @@ namespace Net012New
             ////squareMatrixOne[0, 0] = 1;
             ////squareMatrixOne[0, 0] = 1;
             Matrix<int> matrix = new Matrix<int>(2, 2);
-            matrix[1, 1] = 2;dsfsewrerwet
+            matrix[1, 1] = 2;
             matrix[1, 1] = 2;
 
 
