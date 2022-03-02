@@ -9,14 +9,22 @@ namespace Net012New
             Console.WriteLine("Program start");
             Console.WriteLine("-------------\n");
 
+            try
+            {
+                DiagonalMatrix<int> diagonalMatrixOne = new DiagonalMatrix<int>(2);
 
-            DiagonalMatrix<int> diagonalMatrixOne = new DiagonalMatrix<int>(2);
+                diagonalMatrixOne.OnItemChange += MyMethod;
+                diagonalMatrixOne[0, 0] = 11;
+                diagonalMatrixOne[0, 0] = 11;
+                diagonalMatrixOne[1, 1] = 22;
+                diagonalMatrixOne[-1, 0] = 33;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
-            diagonalMatrixOne.OnItemChange += MyMethod;
-            diagonalMatrixOne[0, 0] = 11;
-            diagonalMatrixOne[0, 0] = 11;
-            diagonalMatrixOne[1, 1] = 22;
-
+            Console.WriteLine("all fine!");
         }
 
         public static void MyMethod(object arg, UniversalEventArgs universalEventArgs)
